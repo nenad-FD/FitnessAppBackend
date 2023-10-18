@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-import db from "./models/index.js";
+import db from "./models/index.cjs";
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server has started on port 5000");

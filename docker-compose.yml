@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+  fitness_mysql:
+    container_name: fitness_mysql
+    image: 'mysql:8.0'
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: "root"
+        MYSQL_DATABASE: "fitness"
+        MYSQL_USERNAME: "fitness"
+        MYSQL_PASSWORD: "password"
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+        - fitness-mysql:/var/lib/mysql
+    networks:
+        - fitness
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+      retries: 3
+      timeout: 5s
+
+networks:
+    fitness:
+        driver: bridge
+volumes:
+    fitness-mysql:
+        driver: local
