@@ -1,6 +1,6 @@
-export default (sequlize, DataTypes) => {
-  const Users = sequlize.define("Users", {
-    fullname: {
+export default (sequelize, DataTypes) => {
+  const Users = sequelize.define("Users", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
