@@ -1,6 +1,6 @@
-export default (sequlize, DataTypes) => {
-  const Users = sequlize.define("Users", {
-    fullname: {
+export default (sequelize, DataTypes) => {
+  const User = sequelize.define("User", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -13,5 +13,5 @@ export default (sequlize, DataTypes) => {
       allowNull: false,
     },
   });
-  return Users;
+  return User;
 };
