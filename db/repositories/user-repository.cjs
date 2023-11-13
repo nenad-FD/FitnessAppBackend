@@ -3,6 +3,8 @@
 
 const getAll = async () => {};
 
+const getById = async () => {};
+
 module.exports = {
   getAll,
 };
