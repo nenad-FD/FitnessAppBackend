@@ -8,10 +8,6 @@ import cookieParser from "cookie-parser";
 //Ovo odvoji kasnije
 import { Sequelize, DataTypes } from "sequelize";
 
-//Users
-// import users from "./models/users.cjs";
-// import userController from "./controllers/user-controller.cjs";
-
 const app = express();
 // import db from "./models/index.cjs";
 
@@ -61,8 +57,22 @@ app.get("/api/users", async (req, res) => {
     console.error("Error:", err);
     res.status(500).json({ error: "error" });
   }
+});
 
-  // res.json(users);
+app.get("/api/users/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (err) {
+    console.error("Error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 //---------------------------------------------------------------
