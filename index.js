@@ -28,8 +28,8 @@ sequelize = new Sequelize("fitnessAppDB", "root", "mysqlfd5020", {
   },
 });
 
-const Users = sequelize.define("Users", {
-  name: {
+const User = sequelize.define("User", {
+  fullName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -41,11 +41,20 @@ const Users = sequelize.define("Users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
+  sumPrice: {
+    type: DataTypes.NUMBER,
+    allowNull: true,
+  },
+  packageType: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 app.get("/api/users", async (req, res) => {
   try {
-    const users = await Users.findAll();
+    const users = await User.findAll();
 
     res.json(users);
   } catch (err) {

@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Users = sequelize.define("Users", {
+  const User = sequelize.define("User", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,5 +13,5 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  return Users;
+  return User;
 };
