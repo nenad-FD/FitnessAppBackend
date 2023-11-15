@@ -1,10 +1,15 @@
-//Ovde komuniciram sa bazom
-//Sve vezano za usera
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
-const getAll = async () => {};
+const getAllUsers = async () => {
+  return await prisma.user.findMany();
+};
 
-const getById = async () => {};
+const getUserById = async (id) => {
+  return await prisma.user.findUnique({ where: { id: id } });
+};
 
 module.exports = {
-  getAll,
+  getAllUsers,
+  getUserById,
 };
