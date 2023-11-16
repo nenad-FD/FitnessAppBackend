@@ -3,7 +3,6 @@ const repository = require("../db/repositories/user-repository.cjs");
 const getAllUsers = async () => {
   try {
     const users = await repository.getAllUsers();
-    console.log(users, "USER IZ SERVISA");
     return users;
   } catch (error) {
     throw error;
@@ -22,7 +21,18 @@ const getUserById = async (id) => {
   }
 };
 
+const createUser = async (newUser) => {
+  try {
+    const user = await repository.createUser(newUser);
+    return user;
+  } catch (error) {
+    console.log("service error");
+    throw error;
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
+  createUser,
 };
