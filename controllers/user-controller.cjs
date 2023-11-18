@@ -12,7 +12,7 @@ const getAll = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const user = await service.getUserById(id);
     res.status(200).json(user);
   } catch (err) {
@@ -22,14 +22,11 @@ const getById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  console.log(req.body, "pre try");
   try {
     const user = await service.createUser(req.body);
-    console.log(user, "create user");
     res.status(200).json(user);
   } catch (err) {
     //Unapredi error handling
-    console.log("controller erro");
     res.status(400).json(err);
   }
 };
