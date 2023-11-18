@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `User` ADD COLUMN `endDate` VARCHAR(191) NULL,
+    ADD COLUMN `priceForThisMonth` VARCHAR(191) NULL,
+    ADD COLUMN `startDate` VARCHAR(191) NULL,
+    ADD COLUMN `sumOfPaidMonths` VARCHAR(191) NULL,
+    MODIFY `sumPrice` VARCHAR(191) NULL;
