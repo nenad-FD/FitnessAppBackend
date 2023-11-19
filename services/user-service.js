@@ -26,7 +26,15 @@ const createUser = async (newUser) => {
     const user = await repository.createUser(newUser);
     return user;
   } catch (error) {
-    console.log("service error");
+    throw error;
+  }
+};
+
+const updateUser = async (user) => {
+  try {
+    const updatedUser = await repository.updateUser(user);
+    return updatedUser;
+  } catch (error) {
     throw error;
   }
 };
@@ -35,4 +43,5 @@ module.exports = {
   getAllUsers,
   getUserById,
   createUser,
+  updateUser,
 };
