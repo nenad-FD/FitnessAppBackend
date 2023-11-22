@@ -10,12 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model DefaultExerciseDescription {
+  id              String      @id @default(uuid())
+  title           String
+  exercise        Excercise[] @relation("ExerciseDefaultDescriptions")
+}
 
 model Excercise {
-  id    String @id @default(uuid())
-  category String
-  description String
-  users User[]
+  id                   String                      @id @default(uuid())
+  category             String
+  description          String?
+  videoURL             String
+  defaultDescription   DefaultExerciseDescription[] @relation("ExerciseDefaultDescriptions")
+  users                User[]
 }
 
 model User {
