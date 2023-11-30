@@ -10,7 +10,6 @@ const getAllExercises = async () => {
 };
 
 const createExercise = async (newExercise) => {
-  console.log(newExercise, "sercice");
   try {
     const excercise = await repository.createExercise(newExercise);
     return excercise;

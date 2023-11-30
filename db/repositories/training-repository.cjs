@@ -1,10 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const getAllExercises = async () => {
-  return await prisma.excercise.findMany();
-};
-
 const createExercise = async (exercise) => {
   try {
     return await prisma.excercise.create({ data: exercise });
@@ -14,6 +10,5 @@ const createExercise = async (exercise) => {
 };
 
 module.exports = {
-  getAllExercises,
   createExercise,
 };
