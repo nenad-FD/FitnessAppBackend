@@ -1,4 +1,4 @@
-const repository = require("../db/repositories/training-respository.cjs");
+const repository = require("../db/repositories/training-repository.cjs");
 
 const createTraining = async (newTraining) => {
   try {
