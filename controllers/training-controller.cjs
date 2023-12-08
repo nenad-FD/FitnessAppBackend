@@ -9,6 +9,17 @@ const create = async (req, res) => {
   }
 };
 
+const getById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const training = await service.getTrainingById(id);
+    res.status(200).json(training);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+};
+
 module.exports = {
   create,
+  getById,
 };

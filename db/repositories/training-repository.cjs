@@ -14,11 +14,17 @@ const createTraining = async (training) => {
   try {
     return await prisma.training.create({ data: newTraining });
   } catch (err) {
-    console.log(err, "error u repos");
     throw err;
   }
 };
 
+const getTrainingById = async (id) => {
+  return await prisma.training.findUnique({
+    where: { id: id },
+  });
+};
+
 module.exports = {
   createTraining,
+  getTrainingById,
 };

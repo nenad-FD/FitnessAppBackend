@@ -9,6 +9,19 @@ const createTraining = async (newTraining) => {
   }
 };
 
+const getTrainingById = async (id) => {
+  try {
+    const training = await repository.getTrainingById(id);
+    if (!training) {
+      throw new Error(`Training id:${id} does not exist!`);
+    }
+    return training;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   createTraining,
+  getTrainingById,
 };
