@@ -21,6 +21,9 @@ const createTraining = async (training) => {
 const getTrainingById = async (id) => {
   return await prisma.training.findUnique({
     where: { id: id },
+    include: {
+      exercises: true,
+    },
   });
 };
 
