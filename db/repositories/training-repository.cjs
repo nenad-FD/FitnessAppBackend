@@ -27,7 +27,12 @@ const getTrainingById = async (id) => {
   });
 };
 
+const deleteTrainingById = async (id) => {
+  return await prisma.training.delete({ where: { id: id } });
+};
+
 module.exports = {
   createTraining,
   getTrainingById,
+  deleteTrainingById,
 };

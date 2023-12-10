@@ -21,7 +21,20 @@ const getTrainingById = async (id) => {
   }
 };
 
+const deleteTrainingById = async (id) => {
+  try {
+    const training = await repository.deleteTrainingById(id);
+    if (!training) {
+      throw new Error(`Training id:${id} does not exist!`);
+    }
+    return training;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   createTraining,
   getTrainingById,
+  deleteTrainingById,
 };

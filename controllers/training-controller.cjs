@@ -19,7 +19,18 @@ const getById = async (req, res) => {
   }
 };
 
+const deleteById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const training = await service.deleteTrainingById(id);
+    res.status(200).json(training);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+};
+
 module.exports = {
   create,
   getById,
+  deleteById,
 };
