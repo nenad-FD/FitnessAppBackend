@@ -11,11 +11,25 @@ datasource db {
 }
 
 
+model Training {
+    id                   String                      @id @default(uuid())
+    date                 DateTime
+    trainingSummary      String
+    exercises            Excercise[]
+    user                 User @relation(fields: [userId], references: [id])
+    userId               String
+
+}
+
+
 model Excercise {
-  id    String @id @default(uuid())
-  category String
-  description String
-  users User[]
+  id                   String                      @id @default(uuid())
+  category             String
+  description          String?
+  videoURL             String
+  defaultDescription   String
+  specificDescription  String?
+  trainings            Training[]
 }
 
 model User {
@@ -29,7 +43,7 @@ model User {
   endDate String?
   sumOfPaidMonths String?
   priceForThisMonth String?
-  exercises Excercise[]
+  trainings Training[]
 }
 
 

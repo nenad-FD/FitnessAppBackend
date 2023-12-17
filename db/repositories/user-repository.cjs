@@ -6,7 +6,16 @@ const getAllUsers = async () => {
 };
 
 const getUserById = async (id) => {
-  return await prisma.user.findUnique({ where: { id: id } });
+  return await prisma.user.findUnique({
+    where: { id: id },
+    include: {
+      trainings: {
+        include: {
+          exercises: true,
+        },
+      },
+    },
+  });
 };
 
 const createUser = async (user) => {
